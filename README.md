@@ -14,6 +14,7 @@ Contents
 
 Planning
 ----------
+**Defining the problem (Topic 1.1.1)**
 
 Design
 ---------
