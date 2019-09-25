@@ -25,6 +25,10 @@ comamand to see total statistics is neccesery.
 
 Design
 ---------
+### First sketch of the system
+![SystemDiagram](System diagram.png)
+**Fig. 1** This is first shetch of the system showing main input/output coponets, actions, and software requirements.
+
 
 Development
 --------
