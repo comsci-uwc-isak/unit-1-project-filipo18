@@ -75,8 +75,8 @@ echo "structure created successfully"
 This file works
 
 **Uninstall program**
-```sh#!/bin/bash
-
+```sh
+#!/bin/bash
 
 #This file uninstalls RentalCarApp
 #By deleting all folders
@@ -99,7 +99,7 @@ else
   echo "RentalCarApp succesfully uninstalled"
 fi
 ```
-This program works
+This file works
 
 
 Evaluation
