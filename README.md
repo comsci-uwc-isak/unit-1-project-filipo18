@@ -32,6 +32,7 @@ Design
 
 Development
 --------
+**Install program**
 ```sh
 #!/bin/bash
 
@@ -39,14 +40,25 @@ Development
 #minimal Car Rental App
 
 echo "Starting the installation"
-echo "Enter the path where you want to install. Press Enter"
+echo "Default install path is /home/filip/Desktop"
+echo "Press Enter to continue installation, if you"
+echo "want to change install path press x  "
 
-read path
+read choice
 
-#movih to the desired location
-cd $path
-echo "moving to $path"
-echo $PWD
+#checking what user eneted
+if [[ ($choice == x) ]];then
+    echo "Enter installation path, then press Enter"
+    read path
+
+    #movih to the desired location
+    cd $path
+    echo "moving to $path"
+
+else
+  #moving to default location
+  cd /home/filip/Desktop
+fi
 
 #Create App folder
 mkdir RentalCarApp
@@ -61,6 +73,34 @@ mkdir scripts
 echo "structure created successfully"
 ``` 
 This file works
+
+**Uninstall program**
+```sh#!/bin/bash
+
+
+#This file uninstalls RentalCarApp
+#By deleting all folders
+
+#checking if user didn't click run uninstall program by accident"
+echo "Are you sure you want to uninstall RentalCarApp?"
+echo "( Press enter to continue press x to cancel )"
+
+#reading users decision
+read cancel
+
+if [[ ($cancel == x) ]];then
+  echo "canceling..."
+  sleep 2
+  exit
+
+else
+  cd /home/filip/Desktop
+  rm -r RentalCarApp
+  echo "RentalCarApp succesfully uninstalled"
+fi
+```
+This program works
+
 
 Evaluation
 -----------
