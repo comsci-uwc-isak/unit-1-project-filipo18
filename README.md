@@ -101,6 +101,11 @@ fi
 ```
 This file works
 
+**Create - file**
+1. Get inputs
+2. Check number of arguments if 4 then continue, if not exit "message"
+3. Write to main file with one extra line. NOt erasing other entries
+4. Create car trip file with license plate.txt
 
 Evaluation
 -----------
