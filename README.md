@@ -23,6 +23,22 @@ requested that commands for entering the trip distance are
 easy. We need to add bascis permenet storage system and backup,
 comamand to see total statistics is neccesery.
 
+### Solution proposoed
+
+
+
+
+### Sucess Criteria
+This are mesurable outcomes
+1. A car can be created and stored in database
+1. A car infromation can be edited
+1. A car can be deleted from the database
+1. The installation is simple-> one step process
+1. A summary (total/avrage distance traveled) can be generated for particular car
+1. Trips can be recorded and stored for an existing car
+1. A basic database system is implemented
+1. A baasic backup funcionality is avelible
+
 Design
 ---------
 ### First sketch of the system
