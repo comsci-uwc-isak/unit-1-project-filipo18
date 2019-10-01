@@ -14,7 +14,7 @@ Contents
 
 Planning
 ----------
-**Defining the problem (Topic 1.1.1)**
+### Defining the problem (Topic 1.1.1)
 We need to create simple program, based in terminal.
 Installation must be easy. User wants that easy commands
 allow him to create car, record a trip, querythe trip
@@ -24,7 +24,7 @@ easy. We need to add bascis permenet storage system and backup,
 comamand to see total statistics is neccesery.
 
 ### Solution proposoed
-
+Because user wants simple program based in terminal, I will be using bash. 
 
 
 
