@@ -17,3 +17,9 @@ sep 27
 we didn't work on project
 We worked on for - loops, I have finnished install and unistall programs
 No new questions
+
+Sep 30
+--------
+We worked on create and record files, we finnished both of them, 
+I still trying to figgure out how to make summary program
+
