@@ -23,3 +23,6 @@ Sep 30
 We worked on create and record files, we finnished both of them, 
 I still trying to figgure out how to make summary program
 
+Oct 2
+-------
+We did class presentations on how to solve every problem thats left to finnsih our car rental shop project, I got few ideas how to solve my summar problem
