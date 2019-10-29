@@ -42,7 +42,7 @@ This are mesurable outcomes
 Design
 ---------
 ### First sketch of the system
-![SystemDiagram](System diagram.png)
+![SystemDiagram](Systemdiagram.png)
 **Fig. 1** This is first shetch of the system showing main input/output coponets, actions, and software requirements.
 
 
@@ -178,13 +178,230 @@ elif [ ! -f "$1.txt" ]; then
 
 #creating plate.txt file with data about each specific car
 else
-  echo "$plate $km $dateout $datein" >> $plate.txt
+  echo "$km $dateout $datein" >> $plate.txt
+  echo "$km" >> trip.txt
   echo "Trip recorded, exiting the program"
+
+fi
+```
+
+**Delete a car program**
+```sh
+#!/bin/bash
+
+
+#This prgoram will delete car entery by users choice
+
+#moving to db directroy
+cd db
+
+#Checking if user entered argument, if not giving him options
+if [[ $* == "" ]]; then
+  echo "Incorrect choice, please choose car from the list bellow: "
+  ls
+#deleting file if user entered correct argument
+elif [[ -f "$*.txt" ]]; then
+  rm $*.txt
+  echo "Car deleted succesfully!"
+  exit
+#Checking if user entered correct argument, if not giving him options
+else
+  echo "Incorrect choice, please choose car from the list bellow: "
+  ls
 fi
 
+
+#getting users delete choice
+echo "Choose which car you want to delete IMPORTANT - LEAVE OUT .txt ENDING OF A FILE"
+read car
+#checking if choice is correct, and deleting chosen car
+if [[ -f "$car.txt" ]]; then
+  rm $car.txt
+  echo "Car deleted succesfully"
+  exit
+#if user did mistake entering the car name, exiting the program
+else
+  echo "Incorrect choice, exiting the program!"
+  exit
+fi
 ```
+
+**Create summary program**
+```sh
+#!/bin/bash
+
+#This pogram will add kilometers in one car.txt file
+
+#moving to right location
+cd ..
+cd db
+
+#checking if user enetred right arguments
+if [ $# -ne 1 ]; then
+echo "Enter license plate"
+ls
+exit
+fi
+
+file=$1
+
+#Printing total ditance for all cars if user enters all as an argument
+if [ $* == all ]; then
+    #Calculating total distance
+    total=0
+    #comand read used with while loop will read the file
+    # chosen od the end of loop done < "file.txt" line by line
+    while read line;
+    do
+      #for loop will go throug line word by word
+      for km in $line
+      do
+        (( total=$km+$total ))
+        #break will break the loop after first cycle
+        break
+      done
+    done < "trip.txt"
+
+    #Printing out the results with frame
+    cd ..
+    cd scripts
+    bash frame.sh "TOTAL DISTANCE TRAVELED BY ALL CARS WAS: $total"
+    exit
+
+elif [ ! -f "$file.txt" ]; then
+  echo "File for car $file does not exist."
+  exit
+fi
+
+
+
+#Calculating total distance for one car
+total=0
+#comand read used with while loop will read the file
+# chosen od the end of loop done < "file.txt" line by line
+while read line;
+do
+  echo $line
+  #for loop will go throug line word by word
+  for km in $line
+  do
+    (( total=$km+$total ))
+    #break will break the loop after first cycle
+    break
+  done
+done < "$file.txt"
+
+#Printing out the results with frame
+cd ..
+cd scripts
+bash frame.sh "TOTAL DISTANCE TRAVELED FOR $file was: $total"
+```
+
 Evaluation
 -----------
+**Create Test 1** 
+First run of the program we had one issue: the test file neededto move to move to the main folder
+```-sh
+cd ../
+```
+This is necessary because the 'create.sh' resides in the main folder where as the test file is inside the /tests folder
 
 
+To check that car wac created in main file (maincarfile.txt), the following command is used ```.sh lastline = $( tail -n 1 db/maincarfile.txt ) ``` . Tail reads file from the bottom, n is number of the  line
+
+**Create Test 2** 
+Everything works correctly. This is test program.
+```.sh
+#!/bin/bash
+
+#This file test the firt successcriterio, namely.
+#A car can be created and sotred in the database
+
+#Step 1: creaste a car usig the script created
+cd ../
+bash create.sh TXM301 nissan red 9
+
+#Step 2: check if the license file .txt was created
+if [[ -f "db/TXM301.txt" ]]; then
+  echo "Test one: a txt file was created inside the database: passed"
+else
+  echo "Test one: Error. File not found: not passed"
+fi
+
+#step 3: Check that the car was added to main File
+cat db/maincarfile.txt
+lastline=$( tail -n 1 db/maincarfile.txt )
+
+#Tail read file from the bottom, now I just check if lastline matches our entry
+if [[ "TXM301 nissan red 9" == $lastline ]];then
+  echo "Test two: Recored was entered correctly: passed"
+else
+  echo "Test two: Failed"
+fi
+```
+**Summary:** We did dynamic alpha white box testing. Dynamic means that we actually run the code, alpha means that it was runned by developers. White box testing means that we have acces to internals of the program.
+
+**Install Test 1**
+Test works, but I encountered few problems:
+1. Testing is not dynamic, I am not really running the install program, just checking result after program was runed manually. If I run install program again for testing, old installation gets overwritten
+1. works just for default installation path
+1. There is still problem with delte program, it deletes just record files and not enteries in maincarfile
+1. When I fix problem with delete file, then there is problem with test file, how to test if car was deleted in main car file
+
+
+
+```sh
+#!/bin/bash
+
+#This program will check if program was installed corectlly
+
+#Moving to installation location
+cd /home/filip/Desktop
+#Checking if main folder exists and seting first test variable to true
+if [[ -d "RentalCarApp" ]]; then
+  test1=true
+fi
+
+
+#Moving inside the folder
+cd RentalCarApp
+if [[ -d "db" && -d "scripts" ]]; then
+  test2=true
+fi
+
+#checking if both test are positive
+if [[ test1 && test2 ]]; then
+  echo "Test complete, program was installed corectlly: passed "
+else
+  echo "Test failed, program installed incorrectly"
+fi
+```
+
+**Delete test 1**
+Test program works but there are still some major problems
+1. There is still problem with delte program, it deletes just record files and not enteries in maincarfile
+1. When I fix problem with delete file, then there is problem with test file, how to test if car was deleted in main car file
+
+```sh
+#!/bin/bash
+
+#This program tests if delete program works propperly
+
+#Runing create script
+cd ../
+bash create.sh AXT567 AUDI red 5
+
+#Running delete program
+bash delete.sh AXT567
+
+#moving to db folder
+cd  db
+
+#checking if file is deleted
+if [[ -f "AXT567" ]]; then
+  echo "Test failed"
+else
+  echo "Test complete, car was deleted correctly: passed"
+fi
+```
 
