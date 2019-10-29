@@ -179,7 +179,6 @@ elif [ ! -f "$1.txt" ]; then
 #creating plate.txt file with data about each specific car
 else
   echo "$km $dateout $datein" >> $plate.txt
-  echo "$km" >> trip.txt
   echo "Trip recorded, exiting the program"
 
 fi
