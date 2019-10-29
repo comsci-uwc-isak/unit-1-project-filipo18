@@ -49,6 +49,12 @@ Design
 Development
 --------
 **Install program**
+1. Tell user what default path is, offer him option to continue or to change path
+1. Move to install location
+1. Create all necessery folders
+1. Copy scripts from download location
+
+
 ```sh
 #!/bin/bash
 
@@ -106,7 +112,12 @@ fi
 ``` 
 This file works
 
+
 **Uninstall program**
+1. Move to program location
+1. Offer user option to cancel unistallation
+1. Delete whole program folder
+
 ```sh
 #!/bin/bash
 
@@ -133,7 +144,10 @@ fi
 ```
 This file works
 
+
 **Backup database script**
+1. Get location where user wants to back up data base
+1. Copy databse to chosen location
 ```sh
 #!/bin/bash
 
@@ -151,6 +165,9 @@ else
 	echo "Successfully backed up into $location."
 fi
 ```
+This program works.
+It is hard for user to specifiy backup location, this should be considered and fixed. I will work on that if I have any time left.
+
 
 **Create a new car - file**
 1. Get inputs
@@ -184,56 +201,52 @@ echo "$model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt
 echo "" > ~/Desktop/RentalCarApp/db/$plate.txt
 bash frame.sh "Car created successfully"
 ```
+This program works
+
 
 **Create record file for a car**
+1. Get arguments from user, change them into variables
+1. Check number of arguments
+1. Add data enetered by user to $plate.txt file
 ```sh
 #!/bin/bash
+#This program will recor car trip and
+#write data into plate.txt file
+
+#changing arguments into variables
+plate=$1
+km=$2
+dateout=$3
+datein=$4
 
 
-#This prgoram will delete car entery by users choice
-
-#moving to db directroy
+#moving to data base folder
+cd ..
 cd db
 
-#Checking if user entered argument, if not giving him options
-if [[ $* == "" ]]; then
-  echo "Incorrect choice, please choose car from the list bellow: "
-  ls
-#deleting file if user entered correct argument
-elif [[ -f "$*.txt" ]]; then
-  rm $*.txt
-  #delete whole line which includes the plate
-  sed -i '' "/$1/d" maincarfile.txt
-  bash frame.sh "The car information was successfully deleted"
-  echo "Car deleted succesfully!"
-  exit
-#Checking if user entered correct argument, if not giving him options
+#checking if file plate.txt exist, and if user eneterd
+#4 arguments
+if [[ ($# -ne 4) ]]; then
+  echo "Incorrect input. Please enter Plate, kilometers, dateout, datein Exiting the program... "
+
+
+elif [ ! -f "$1.txt" ]; then
+  echo "Car don't exist, please crate a car, exiting the program... "
+
+#creating plate.txt file with data about each specific car
 else
-  echo "Incorrect choice, please choose car from the list bellow: "
-  ls
-fi
+  echo "$km $dateout $datein" >> $plate.txt
+  echo "Trip recorded, exiting the program"
 
-
-#getting users delete choice
-echo "Choose which car you want to delete IMPORTANT - LEAVE OUT .txt ENDING OF A FILE"
-read car
-#checking if choice is correct, and deleting chosen car
-if [[ -f "$car.txt" ]]; then
-  rm $car.txt
-  echo "Car deleted succesfully"
-  #delete whole line which includes the plate
-  sed -i '' "/$1/d" maincarfile.txt
-  bash frame.sh "The car information was successfully deleted"
-  exit
-
-#if user did mistake entering the car name, exiting the program
-else
-  echo "Incorrect choice, exiting the program!"
-  exit
 fi
 ```
+This program works
 
 **Delete a car program**
+1. Ask user which car to delete
+1. Check if user chose correctly
+1. Delete chosen $plate.txt file and car entery in maincarfile.txt
+
 ```sh
 #!/bin/bash
 
@@ -281,7 +294,12 @@ else
 fi
 ```
 
+This program is put together from few differend programs but never tested. I need to test it.
+
 **Create summary program**
+1. If user eneters license plate as argument, print total kilometers for this license plate
+1. If user enters all as an argument then show him total kilometers for all cars
+
 ```sh
 #!/bin/bash
 
@@ -363,6 +381,10 @@ bash frame.sh "TOTAL DISTANCE TRAVELED FOR $file was: $total"
 
 
 ```
+This program works
+
+
+
 **Edit car script**
 ```sh
 #!/bin/bash
@@ -402,6 +424,8 @@ bash frame2 "Car edited successfully"
 1. Then checks if car we want to edit even exists
 1. Than it finds car user wants in main car file
 1. Deletes it and than add the data
+
+This program is just copied, not tested yet.
 
 Evaluation
 -----------
