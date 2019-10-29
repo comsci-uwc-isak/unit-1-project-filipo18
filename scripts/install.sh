@@ -16,22 +16,38 @@ if [[ ($choice == x) ]];then
     read path
 
     #movih to the desired location
-    cd $path
-    echo "moving to $path"
+    echo "Starring the installation"
+    cd ~/$path
+    #Create App folder
+    echo "Creating folders"
+    mkdir CarRentalApp
+    cd CarRentalApp
+    mkdir db
+    mkdir scripts
+    mkdir tests
+
+
+
+    cp -a ~/Downloads/CarRentalAppInstall/scripts/. ~/$path/CarRentalApp/scripts
+    cd scripts
+    bash frame.sh "Install successfully"
 
 else
   #moving to default location
-  cd /home/filip/Desktop
+
+    echo "Starring the installation"
+    cd ~/Desktop
+    #Create App folder
+    echo "Creating folders"
+    mkdir CarRentalApp
+    cd CarRentalApp
+    mkdir db
+    mkdir scripts
+    mkdir tests
+
+
+    echo "Set up scripts file"
+    cp -a ~/Downloads/CarRentalAppInstall/scripts/. ~/Desktop/CarRentalApp/scripts
+    cd scripts
+    bash frame.sh "Install successfully"
 fi
-
-#Create App folder
-mkdir RentalCarApp
-
-#move to created folder
-cd RentalCarApp
-
-#create for database and scripts
-mkdir db
-mkdir scripts
-
-echo "structure created successfully"
