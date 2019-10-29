@@ -4,10 +4,12 @@
 
 location=$1
 
+#We check if user eneterd just one argument
 if [[ $# -ne 1 ]]; then
 	echo "Sorry, there was an error with backing up your files."
 	exit
 else
-	cp -a /Users/rikiodahlgren/Desktop/RentalCarApp/db $location
+  #we copy database
+	cp -a ~/Desktop/RentalCarApp/db $location
 	echo "Successfully backed up into $location."
 fi
