@@ -68,25 +68,41 @@ if [[ ($choice == x) ]];then
     read path
 
     #movih to the desired location
-    cd $path
-    echo "moving to $path"
+    echo "Starring the installation"
+    cd ~/$path
+    #Create App folder
+    echo "Creating folders"
+    mkdir CarRentalApp
+    cd CarRentalApp
+    mkdir db
+    mkdir scripts
+    mkdir tests
+
+
+
+    cp -a ~/Downloads/CarRentalAppInstall/scripts/. ~/$path/CarRentalApp/scripts
+    cd scripts
+    bash frame.sh "Install successfully"
 
 else
   #moving to default location
-  cd /home/filip/Desktop
+
+    echo "Starring the installation"
+    cd ~/Desktop
+    #Create App folder
+    echo "Creating folders"
+    mkdir CarRentalApp
+    cd CarRentalApp
+    mkdir db
+    mkdir scripts
+    mkdir tests
+
+
+    echo "Set up scripts file"
+    cp -a ~/Downloads/CarRentalAppInstall/scripts/. ~/Desktop/CarRentalApp/scripts
+    cd scripts
+    bash frame.sh "Install successfully"
 fi
-
-#Create App folder
-mkdir RentalCarApp
-
-#move to created folder
-cd RentalCarApp
-
-#create for database and scripts
-mkdir database
-mkdir scripts
-
-echo "structure created successfully"
 ``` 
 This file works
 
@@ -117,7 +133,7 @@ fi
 ```
 This file works
 
-**Record car trip script**
+**Backup database script**
 ```sh
 #!/bin/bash
 
@@ -164,7 +180,7 @@ color=$3
 pp=$4
 
 #adding new entry to file maincarfile.txt
-echo "$plate $model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt
+echo "$model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt
 echo "" > ~/Desktop/RentalCarApp/db/$plate.txt
 bash frame.sh "Car created successfully"
 ```
@@ -173,33 +189,47 @@ bash frame.sh "Car created successfully"
 ```sh
 #!/bin/bash
 
-#This program will recor car trip and
-#write data into plate.txt file
 
-#changing arguments into variables
-plate=$1
-km=$2
-dateout=$3
-datein=$4
+#This prgoram will delete car entery by users choice
 
+#moving to db directroy
+cd db
 
-#moving to instalation folder
-cd ~/Desktop/RentalCarApp/db/
-
-#checking if file plate.txt exist, and if user eneterd
-#4 arguments
-if [[ ($# -ne 4) ]]; then
-  echo "Incorrect input. Please enter Plate, kilometers, dateout, datein Exiting the program... "
-
-
-elif [ ! -f "$1.txt" ]; then
-  echo "Car don't exist, please crate a car, exiting the program... "
-
-#creating plate.txt file with data about each specific car
+#Checking if user entered argument, if not giving him options
+if [[ $* == "" ]]; then
+  echo "Incorrect choice, please choose car from the list bellow: "
+  ls
+#deleting file if user entered correct argument
+elif [[ -f "$*.txt" ]]; then
+  rm $*.txt
+  #delete whole line which includes the plate
+  sed -i '' "/$1/d" maincarfile.txt
+  bash frame.sh "The car information was successfully deleted"
+  echo "Car deleted succesfully!"
+  exit
+#Checking if user entered correct argument, if not giving him options
 else
-  echo "$km $dateout $datein" >> $plate.txt
-  echo "Trip recorded, exiting the program"
+  echo "Incorrect choice, please choose car from the list bellow: "
+  ls
+fi
 
+
+#getting users delete choice
+echo "Choose which car you want to delete IMPORTANT - LEAVE OUT .txt ENDING OF A FILE"
+read car
+#checking if choice is correct, and deleting chosen car
+if [[ -f "$car.txt" ]]; then
+  rm $car.txt
+  echo "Car deleted succesfully"
+  #delete whole line which includes the plate
+  sed -i '' "/$1/d" maincarfile.txt
+  bash frame.sh "The car information was successfully deleted"
+  exit
+
+#if user did mistake entering the car name, exiting the program
+else
+  echo "Incorrect choice, exiting the program!"
+  exit
 fi
 ```
 
@@ -220,6 +250,9 @@ if [[ $* == "" ]]; then
 #deleting file if user entered correct argument
 elif [[ -f "$*.txt" ]]; then
   rm $*.txt
+  #delete whole line which includes the plate
+  sed -i '' "/$1/d" maincarfile.txt
+  bash frame.sh "The car information was successfully deleted"
   echo "Car deleted succesfully!"
   exit
 #Checking if user entered correct argument, if not giving him options
@@ -236,7 +269,11 @@ read car
 if [[ -f "$car.txt" ]]; then
   rm $car.txt
   echo "Car deleted succesfully"
+  #delete whole line which includes the plate
+  sed -i '' "/$1/d" maincarfile.txt
+  bash frame.sh "The car information was successfully deleted"
   exit
+
 #if user did mistake entering the car name, exiting the program
 else
   echo "Incorrect choice, exiting the program!"
@@ -307,7 +344,7 @@ fi
 #Calculating total distance for one car
 total=0
 #comand read used with while loop will read the file
-#chosen od the end of loop done < "file.txt" line by line
+# chosen od the end of loop done < "file.txt" line by line
 while read line;
 do
   #for loop will go throug line word by word
@@ -323,6 +360,8 @@ done < "$file.txt"
 cd ..
 cd scripts
 bash frame.sh "TOTAL DISTANCE TRAVELED FOR $file was: $total"
+
+
 ```
 **Edit car script**
 ```sh
