@@ -117,6 +117,25 @@ fi
 ```
 This file works
 
+**Record car trip script**
+```sh
+#!/bin/bash
+
+#This program will backup the entirity of the database folder within the MinimalCarRental application.
+
+location=$1
+
+#We check if user eneterd just one argument
+if [[ $# -ne 1 ]]; then
+	echo "Sorry, there was an error with backing up your files."
+	exit
+else
+  #we copy database
+	cp -a ~/Desktop/RentalCarApp/db $location
+	echo "Successfully backed up into $location."
+fi
+```
+
 **Create a new car - file**
 1. Get inputs
 2. Check number of arguments if 4 then continue, if not exit "message"
