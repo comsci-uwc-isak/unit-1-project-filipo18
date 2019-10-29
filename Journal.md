@@ -50,3 +50,8 @@ Try just to get everything that teachers says in class, try to understand every 
 
 **What are some things/activities/strategies that you would change in the CS classroom to achive your best in the next 6 weeks**
 Class works perfect for me. I always prefered problem based learnig when I was faced with problem I need to solve and learn in the proces of problem solving. Working on theory from the begining and then try to apply it to problems is much harder for me, because without examples I don't have nothing to conect what I learned from theroy.
+
+
+Oct 29
+-------
+Today we were finnishing CarRentalApp, I just copied edit and delete and backup programs, so I need to test them and finnish documentation for them. I feel like I have situtation under control, backup, install and uninstall programs will maybe make me some problems becasue for user is complicated to enter correct path. For me is hard to guess whic path will be correct on users computer. I will try to work on that. Otherwise app is almost finnished. Tomorrow willl probably be complete than just testing seperates us from finnishing the project.
