@@ -29,4 +29,4 @@ sed -i '' "/^$license/d" maincarfile.txt
 #add the new information
 echo "$license $maker $model $pp" >> maincarfile.txt
 cd ../scripts
-bash frame2 "Car edited successfully"
+bash frame.sh "Car edited successfully"

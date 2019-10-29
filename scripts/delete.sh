@@ -13,6 +13,9 @@ if [[ $* == "" ]]; then
 #deleting file if user entered correct argument
 elif [[ -f "$*.txt" ]]; then
   rm $*.txt
+  #delete whole line which includes the plate
+  sed -i '' "/$1/d" maincarfile.txt
+  bash frame.sh "The car information was successfully deleted"
   echo "Car deleted succesfully!"
   exit
 #Checking if user entered correct argument, if not giving him options
@@ -29,7 +32,11 @@ read car
 if [[ -f "$car.txt" ]]; then
   rm $car.txt
   echo "Car deleted succesfully"
+  #delete whole line which includes the plate
+  sed -i '' "/$1/d" maincarfile.txt
+  bash frame.sh "The car information was successfully deleted"
   exit
+
 #if user did mistake entering the car name, exiting the program
 else
   echo "Incorrect choice, exiting the program!"
