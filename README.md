@@ -26,7 +26,47 @@ comamand to see total statistics is neccesery.
 ### Solution proposoed
 Because user wants simple program based in terminal, I will be using bash. 
 
+### Flow steps for every syntax
+**Install program**
+1. Tell user what default path is, offer him option to continue or to change path
+1. Move to install location
+1. Create all necessery folders
+1. Copy scripts from download location
 
+**Uninstall script**
+1. Move to program location
+1. Offer user option to cancel unistallation
+1. Delete whole program folder
+
+**Backup database script**
+1. Get location where user wants to back up data base
+1. Copy databse to location chosen by user
+
+**Create a new car - script**
+1. Get inputs
+1. Check number of arguments if 4 then continue, if not exit "message"
+1. Write to main file with one extra line. NOt erasing other entries
+1. Create car trip file with license plate.txt
+
+**Record car trip script**
+1. Get arguments from user, change them into variables
+1. Check number of arguments (license, plate, dateout, datein)
+1. Add data enetered by user to $plate.txt file
+
+**Delete a car script**
+1. Ask user which car to delete
+1. Check if user chose correctly
+1. Delete chosen $plate.txt file and car entery in maincarfile.txt
+
+**Create summary script**
+1. If user eneters license plate as argument, print total kilometers for this license plate
+1. If user enters all as an argument then show him total kilometers for all cars
+
+**Edit car script**
+1. This script first check if user eneterd correct number of arguments
+1. Then checks if car we want to edit even exists
+1. Than it finds car user wants in main car file
+1. Deletes it and than add the data
 
 ### Sucess Criteria
 This are mesurable outcomes
@@ -39,6 +79,8 @@ This are mesurable outcomes
 1. A basic database system is implemented
 1. A baasic backup funcionality is avelible
 
+
+
 Design
 ---------
 ### First sketch of the system
@@ -46,14 +88,10 @@ Design
 **Fig. 1** This is first shetch of the system showing main input/output coponets, actions, and software requirements.
 
 
+
 Development
 --------
 **Install program**
-1. Tell user what default path is, offer him option to continue or to change path
-1. Move to install location
-1. Create all necessery folders
-1. Copy scripts from download location
-
 
 ```sh
 #!/bin/bash
@@ -109,17 +147,15 @@ else
     cd scripts
     bash frame.sh "Install successfully"
 fi
-``` 
+```
 This file works
 
 
-**Uninstall program**
-1. Move to program location
-1. Offer user option to cancel unistallation
-1. Delete whole program folder
+**Uninstall script**
 
 ```sh
 #!/bin/bash
+
 
 #This file uninstalls RentalCarApp
 #By deleting all folders
@@ -146,8 +182,6 @@ This file works
 
 
 **Backup database script**
-1. Get location where user wants to back up data base
-1. Copy databse to chosen location
 ```sh
 #!/bin/bash
 
@@ -169,11 +203,7 @@ This program works.
 It is hard for user to specifiy backup location, this should be considered and fixed. I will work on that if I have any time left.
 
 
-**Create a new car - file**
-1. Get inputs
-2. Check number of arguments if 4 then continue, if not exit "message"
-3. Write to main file with one extra line. NOt erasing other entries
-4. Create car trip file with license plate.txt
+**Create a new car script**
 
 ```sh
 #!/bin/bash
@@ -197,7 +227,7 @@ color=$3
 pp=$4
 
 #adding new entry to file maincarfile.txt
-echo "$model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt
+echo "$plate $model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt
 echo "" > ~/Desktop/RentalCarApp/db/$plate.txt
 bash frame.sh "Car created successfully"
 ```
@@ -205,11 +235,10 @@ This program works
 
 
 **Create record file for a car**
-1. Get arguments from user, change them into variables
-1. Check number of arguments
-1. Add data enetered by user to $plate.txt file
+
 ```sh
 #!/bin/bash
+
 #This program will recor car trip and
 #write data into plate.txt file
 
@@ -220,15 +249,16 @@ dateout=$3
 datein=$4
 
 
-#moving to data base folder
-cd ..
-cd db
+#moving to instalation folder
+cd ~/Desktop/RentalCarApp/db/
 
 #checking if file plate.txt exist, and if user eneterd
 #4 arguments
 if [[ ($# -ne 4) ]]; then
   echo "Incorrect input. Please enter Plate, kilometers, dateout, datein Exiting the program... "
-
+  cd ..
+  cd db
+  ls
 
 elif [ ! -f "$1.txt" ]; then
   echo "Car don't exist, please crate a car, exiting the program... "
@@ -236,16 +266,15 @@ elif [ ! -f "$1.txt" ]; then
 #creating plate.txt file with data about each specific car
 else
   echo "$km $dateout $datein" >> $plate.txt
-  echo "Trip recorded, exiting the program"
+  cd ..
+  cd scripts
+  bash frame.sh Trip recorded, exiting the program
 
 fi
 ```
 This program works
 
-**Delete a car program**
-1. Ask user which car to delete
-1. Check if user chose correctly
-1. Delete chosen $plate.txt file and car entery in maincarfile.txt
+**Delete a car script**
 
 ```sh
 #!/bin/bash
@@ -254,17 +283,21 @@ This program works
 #This prgoram will delete car entery by users choice
 
 #moving to db directroy
+cd ..
 cd db
 
 #Checking if user entered argument, if not giving him options
 if [[ $* == "" ]]; then
   echo "Incorrect choice, please choose car from the list bellow: "
-  ls
+    ls
+
 #deleting file if user entered correct argument
 elif [[ -f "$*.txt" ]]; then
   rm $*.txt
   #delete whole line which includes the plate
-  sed -i '' "/$1/d" maincarfile.txt
+  sed -i "/$1/d" maincarfile.txt
+  cd ..
+  cd scripts
   bash frame.sh "The car information was successfully deleted"
   echo "Car deleted succesfully!"
   exit
@@ -283,7 +316,9 @@ if [[ -f "$car.txt" ]]; then
   rm $car.txt
   echo "Car deleted succesfully"
   #delete whole line which includes the plate
-  sed -i '' "/$1/d" maincarfile.txt
+  sed -i "/$1/d" maincarfile.txt
+  cd ..
+  cd scripts
   bash frame.sh "The car information was successfully deleted"
   exit
 
@@ -294,11 +329,14 @@ else
 fi
 ```
 
-This program is put together from few differend programs but never tested. I need to test it.
+1. 29th Oct This program is put together from few differend programs but never tested. I need to test it.
+1. 30th Oct First run of the program, program not working, it does not delete car from maincar file, problem is in syntax which is differend for macOS and linux
+```sh sed -i '' "/^$license/d" maincarfile.txt ```
+1. 30th Oct Second run of the program, program works correctly. If syntax is differend in macOS and Linux, does that mean that program doesn't work on macOS? I will test that next time
+```sh sed -i '' "/^$license/d" maincarfile.txt ```
 
-**Create summary program**
-1. If user eneters license plate as argument, print total kilometers for this license plate
-1. If user enters all as an argument then show him total kilometers for all cars
+
+**Create summary script**
 
 ```sh
 #!/bin/bash
@@ -378,24 +416,27 @@ done < "$file.txt"
 cd ..
 cd scripts
 bash frame.sh "TOTAL DISTANCE TRAVELED FOR $file was: $total"
-
-
 ```
+
 This program works
 
 
 
 **Edit car script**
+
 ```sh
 #!/bin/bash
 #This program edit the information of an exiting car in the
 #maincarfile
-#user enters [license place] [model] [red] [pp]
+#user enters [license place] [model] [color] [pp]
 
 #checking if user eneterd correct number of arguments
 if [ $# -ne 4 ]; then
   echo "Error with the number of arguments"
   echo "Enter License Model Color Passengers"
+  cd ..
+  cd db
+  ls
   exit
 fi
 
@@ -406,29 +447,103 @@ model=$3
 pp=$4
 
 #Changing to right directory
-cd ../Database
+cd ../db
 
 #Checking if wanted car exists
 if [ ! -f "$license.txt" ]; then
   echo "File not found!"
+  cd ..
+  cd db
+  ls
 fi
 
 #find the line with the given car plate and delete it
-sed -i '' "/^$license/d" maincarfile.txt
+sed -i "/^$license/d" maincarfile.txt
 #add the new information
 echo "$license $maker $model $pp" >> maincarfile.txt
 cd ../scripts
-bash frame2 "Car edited successfully"
+bash frame.sh "Car edited successfully"
 ```
-1. This script first check if user eneterd correct number of arguments
-1. Then checks if car we want to edit even exists
-1. Than it finds car user wants in main car file
-1. Deletes it and than add the data
 
-This program is just copied, not tested yet.
+1. 29th Oct Program is just copied, not tested yet.
+1. 30th Oct First run does not delete car from maincar file, it just adds new entery, problem is in syintax, it is differend on macOS and Linux
+```sh sed -i '' "/^$license/d" maincarfile.txt ``` 
+1. 30th Oct Second run program works correctly
+```sh sed -i "/^$license/d" maincarfile.txt ```
 
-Evaluation
------------
+**User documentation man pages**
+**Uninstall man page**
+```sh
+.TH man 6 "30 Oct 2019" "1.0" "uninstall man page"
+.SH NAME
+uninstall \- uninstall CarRentalApp
+.SH SYNOPSIS
+bash uninstall.sh 
+.SH DESCRIPTION 
+uninstall is a script that uninstalls CarRentalApp (deletes all files)
+.SH EXAMPLES 
+bash uninstall.sh
+.SH AUTHOR
+Filip Ignijic
+```
+**Summary man page**
+```sh
+.TH man 6 "30 Oct 2019" "1.0" "summary man page"
+.SH NAME
+summary \- summary of car trip or all car trips
+.SH SYNOPSIS
+bash summary.sh [license plate] or [all]
+.SH DESCRIPTION 
+summary is a script that creates a summary of all kilometers for a specified car or for all cars
+.SH EXAMPLES 
+bash summary.sh LJ67
+.SH AUTHOR
+Filip Ignijic
+```
+**Record man page**
+```sh
+.TH man 6 "30 Oct 2019" "1.0" "record man page"
+.SH NAME
+record \- record car trip
+.SH SYNOPSIS
+bash record.sh [license] [km] [date out] [date in]
+.SH DESCRIPTION 
+record is a script that adds new car trip to license.txt file 
+.SH EXAMPLES 
+bash record.sh LJ567 500 12/11/2019 15/11/2019
+.SH AUTHOR
+Filip Ignijic
+```
+**Install man page**
+```sh
+.TH man 6 "30 Oct 2019" "1.0" "install man page"
+.SH NAME
+install \- install CarRentalApp
+.SH SYNOPSIS
+bash install.sh
+.SH DESCRIPTION 
+install is a script that installs car rental app - creates all directorires and coppies all the necessery scripts
+.SH EXAMPLES 
+bash install.sh
+.SH AUTHOR
+Filip Ignijic
+```
+**Edit man page**
+```sh
+.TH man 6 "28 Oct 2019" "1.0" "edit man page"
+.SH NAME
+edit \- edit a car
+.SH SYNOPSIS
+bash edit.sh [license] [model] [color] [passangers]
+.SH DESCRIPTION 
+edit is a script that edits an old record of the car in maincarfile.txt and deletes the old one
+.SH EXAMPLES 
+bash edit.sh LXH798 Mazda Blue 4
+.SH AUTHOR
+Filip Ignijic
+```
+
+**TESTS**
 **Create Test 1** 
 First run of the program we had one issue: the test file neededto move to move to the main folder
 ```-sh
@@ -535,3 +650,8 @@ else
 fi
 ```
 
+
+Evaluation
+-----------
+Compare to evaulation criteria
+improvements: test files, all the paths install uninstall backup
