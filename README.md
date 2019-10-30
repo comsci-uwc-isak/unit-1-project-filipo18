@@ -26,7 +26,31 @@ comamand to see total statistics is neccesery.
 ### Solution proposoed
 Because user wants simple program based in terminal with simple comands, I will use bash language, which allows me to crate simple commands and program operating in terminal. 
 
-### Flow steps for every syntax
+
+### Sucess Criteria
+This are mesurable outcomes
+1. A car can be created and stored in database
+1. A car infromation can be edited
+1. A car can be deleted from the database
+1. The installation is simple-> one step process
+1. A summary (total/avrage distance traveled) can be generated for particular car
+1. Trips can be recorded and stored for an existing car
+1. A basic database system is implemented
+1. A baasic backup funcionality is avelible
+
+
+
+Design
+---------
+### First sketch of the system
+![SystemDiagram](Systemdiagram.png)
+**Fig. 1** This is first shetch of the system showing main input/output coponets, actions, and software requirements.
+
+### Testing plan
+![testflow](testflow.jpg)
+**Fig. 2** This is flowdiagram for testing the program
+
+### Steps for every syntax
 **Install program**
 1. Tell user what default path is, offer him option to continue or to change path
 1. Move to install location
@@ -68,27 +92,6 @@ Because user wants simple program based in terminal with simple comands, I will 
 1. Than it finds car user wants in main car file
 1. Deletes it and than add the data
 
-### Sucess Criteria
-This are mesurable outcomes
-1. A car can be created and stored in database
-1. A car infromation can be edited
-1. A car can be deleted from the database
-1. The installation is simple-> one step process
-1. A summary (total/avrage distance traveled) can be generated for particular car
-1. Trips can be recorded and stored for an existing car
-1. A basic database system is implemented
-1. A baasic backup funcionality is avelible
-
-
-
-Design
----------
-### First sketch of the system
-![SystemDiagram](Systemdiagram.png)
-**Fig. 1** This is first shetch of the system showing main input/output coponets, actions, and software requirements.
-
-### Testing plan
-![testflow](testflow.jpg)
 
 Development
 --------
