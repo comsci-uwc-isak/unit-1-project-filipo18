@@ -153,6 +153,9 @@ else
 fi
 ```
 This file works
+1. If command which is used in this program executes folowing command if criteria in brackets is true, if not it moves to next elif or else line till we end it with fi comand.
+1. cp commands copies folder from first specified location to second specified location
+```sh   cp -a ~/Downloads/CarRentalAppInstall/scripts/. ~/Desktop/CarRentalApp/scripts ```
 
 
 **Uninstall script**
@@ -182,7 +185,7 @@ else
   echo "RentalCarApp succesfully uninstalled"
 fi
 ```
-This file works
+This file works if user confirms default install location. If program is installed somwhere else than uninstall doesn't work.
 
 
 **Backup database script**
@@ -236,7 +239,98 @@ echo "" > ~/Desktop/RentalCarApp/db/$plate.txt
 bash frame.sh "Car created successfully"
 ```
 This program works
+1. > is used to create new file and add entered text to file, but if overwrites old file with the same name 
+```sh echo "" > ~/Desktop/RentalCarApp/db/$plate.txt ```
+1. >> is used to create new file or add text to already existing file
+```sh echo "$plate $model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt ```
 
+**Frame scrip**
+```sh
+#!/bin/bash
+
+#counting number of letters in a word
+word=$*
+len=${#word}
+
+
+
+#calculating position of a word
+x=1
+((dev=$len/2))
+((pos=49-$dev))
+
+  #calibrating position depends on odd or even number of characters
+  ((test=$len%2))
+  echo $test
+  if [[ ($test -eq 0) ]]; then
+    x=0
+  fi
+
+
+#repeating sign % for 100 times
+for (( i=0; i<100; i++ ))
+do
+  echo -n "%"
+done
+echo ""
+
+#making one line of space and side signs
+echo -n "%"
+for (( i=0; i<98; i++ ))
+do
+  echo -n " "
+done
+echo "%"
+
+#making another line of space and side signs
+echo -n "%"
+for (( i=0; i<98; i++ ))
+do
+  echo -n " "
+done
+echo "%"
+
+      #positioning the word
+      echo -n "%"
+      for (( i=0; i<$pos; i++))
+      do
+        echo -n " "
+      done
+      #printing out the word
+      echo -n $word
+      #positioning the word
+      for (( i=$x; i<$pos; i++))
+      do
+        echo -n " "
+      done
+      echo "%"
+
+
+#making one line of space and side signs
+echo -n "%"
+for (( i=0; i<98; i++ ))
+do
+  echo -n " "
+done
+echo "%"
+
+
+#making another line of space and side signs
+echo -n "%"
+for (( i=0; i<98; i++ ))
+do
+  echo -n " "
+done
+echo "%"
+
+#making bottom line 
+for (( i=0; i<100; i++ ))
+do
+  echo -n "%"
+done
+echo ""
+```
+This script is used to print messeges to the user in frame. Messege is always positioned in the middle of the frame.
 
 **Create record file for a car**
 
@@ -339,6 +433,8 @@ fi
 1. 30th Oct Second run of the program, program works correctly. If syntax is differend in macOS and Linux, does that mean that program doesn't work on macOS? I will test that next time
 ```sh sed -i '' "/^$license/d" maincarfile.txt ```
 
+```sh sed -i "/$1/d" maincarfile.txt ```
+This comand is used to search for the line that starts with argument entered by the user and delete it in file defined
 
 **Create summary script**
 
@@ -424,6 +520,24 @@ bash frame.sh "TOTAL DISTANCE TRAVELED FOR $file was: $total"
 
 This program works
 
+```sh
+for f in *.txt;
+do
+done
+```
+This script is used go thorugh all .txt files in the folder
+
+```sh
+while read line;
+        do
+          for km in $line
+          do
+            
+          done
+        done < "$f"
+```
+This script is used to read all the words if file defined at the end. While loop goes through all the lines in file, for loop goes through every word in line.
+
 
 
 **Edit car script**
@@ -472,6 +586,7 @@ bash frame.sh "Car edited successfully"
 1. 29th Oct Program is just copied, not tested yet.
 1. 30th Oct First run does not delete car from maincar file, it just adds new entery, problem is in syintax, it is differend on macOS and Linux
 ```sh sed -i '' "/^$license/d" maincarfile.txt ``` 
+sed command is used to search for line in a file defined, that starts with wanted string ($license in our case) and deletes it
 1. 30th Oct Second run program works correctly
 ```sh sed -i "/^$license/d" maincarfile.txt ```
 
@@ -597,8 +712,6 @@ Test works, but I encountered few problems:
 1. There is still problem with delte program, it deletes just record files and not enteries in maincarfile
 1. When I fix problem with delete file, then there is problem with test file, how to test if car was deleted in main car file
 
-
-
 ```sh
 #!/bin/bash
 
@@ -657,5 +770,16 @@ fi
 
 Evaluation
 -----------
-Compare to evaulation criteria
+
+### Evaluation Sucess Criteria
+1. A car can be created and stored in database - YES
+1. A car infromation can be edited - YES
+1. A car can be deleted from the database - YES
+1. The installation is simple-> one step process - YES
+1. A summary (total/avrage distance traveled) can be generated for particular car - YES (Just total distance)
+1. Trips can be recorded and stored for an existing car - YES
+1. A basic database system is implemented - YES
+1. A baasic backup funcionality is avelible - YES
+
+### Improvements
 improvements: test files, all the paths install uninstall backup
