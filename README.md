@@ -17,14 +17,14 @@ Planning
 ### Defining the problem (Topic 1.1.1)
 We need to create simple program, based in terminal.
 Installation must be easy. User wants that easy commands
-allow him to create car, record a trip, querythe trip
+allow him to create car, record a trip, get trip
 history of a car, edit and delete car. It is specificly 
 requested that commands for entering the trip distance are 
 easy. We need to add bascis permenet storage system and backup,
 comamand to see total statistics is neccesery.
 
 ### Solution proposoed
-Because user wants simple program based in terminal, I will be using bash. 
+Because user wants simple program based in terminal with simple comands, I will use bash language, which allows me to crate simple commands and program operating in terminal. 
 
 ### Flow steps for every syntax
 **Install program**
@@ -87,7 +87,8 @@ Design
 ![SystemDiagram](Systemdiagram.png)
 **Fig. 1** This is first shetch of the system showing main input/output coponets, actions, and software requirements.
 
-
+### Testing plan
+![testflow](testflow.jpg)
 
 Development
 --------
