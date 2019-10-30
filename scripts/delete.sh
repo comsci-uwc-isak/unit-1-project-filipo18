@@ -4,17 +4,21 @@
 #This prgoram will delete car entery by users choice
 
 #moving to db directroy
+cd ..
 cd db
 
 #Checking if user entered argument, if not giving him options
 if [[ $* == "" ]]; then
   echo "Incorrect choice, please choose car from the list bellow: "
-  ls
+    ls
+
 #deleting file if user entered correct argument
 elif [[ -f "$*.txt" ]]; then
   rm $*.txt
   #delete whole line which includes the plate
-  sed -i '' "/$1/d" maincarfile.txt
+  sed -i "/$1/d" maincarfile.txt
+  cd ..
+  cd scripts
   bash frame.sh "The car information was successfully deleted"
   echo "Car deleted succesfully!"
   exit
@@ -33,7 +37,9 @@ if [[ -f "$car.txt" ]]; then
   rm $car.txt
   echo "Car deleted succesfully"
   #delete whole line which includes the plate
-  sed -i '' "/$1/d" maincarfile.txt
+  sed -i "/$1/d" maincarfile.txt
+  cd ..
+  cd scripts
   bash frame.sh "The car information was successfully deleted"
   exit
 
