@@ -19,6 +19,6 @@ color=$3
 pp=$4
 
 #adding new entry to file maincarfile.txt
-echo "$model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt
+echo "$plate $model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt
 echo "" > ~/Desktop/RentalCarApp/db/$plate.txt
 bash frame.sh "Car created successfully"

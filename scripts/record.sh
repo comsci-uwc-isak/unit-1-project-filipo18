@@ -17,7 +17,9 @@ cd ~/Desktop/RentalCarApp/db/
 #4 arguments
 if [[ ($# -ne 4) ]]; then
   echo "Incorrect input. Please enter Plate, kilometers, dateout, datein Exiting the program... "
-
+  cd ..
+  cd db
+  ls
 
 elif [ ! -f "$1.txt" ]; then
   echo "Car don't exist, please crate a car, exiting the program... "
@@ -25,6 +27,8 @@ elif [ ! -f "$1.txt" ]; then
 #creating plate.txt file with data about each specific car
 else
   echo "$km $dateout $datein" >> $plate.txt
-  echo "Trip recorded, exiting the program"
+  cd ..
+  cd scripts
+  bash frame.sh Trip recorded, exiting the program
 
 fi
