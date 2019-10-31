@@ -154,16 +154,13 @@ fi
 ```
 This file works
 1. If command which is used in this program executes folowing command if criteria in brackets is true, if not it moves to next elif or else line till we end it with fi comand.
-1. cp commands copies folder from first specified location to second specified location
+2. cp commands copies folder from first specified location to second specified location
 ```sh
 cp -a ~/Downloads/CarRentalAppInstall/scripts/. ~/Desktop/CarRentalApp/scripts 
 ```
-1. Cd is used to change directory
-```sh 
-cd 
-```
-1. mkdir is used to make directroy (fodlder)
-``` mkdir ```
+3. Cd is used to change directory``` cd ```
+4. mkdir is used to make directroy (fodlder) ``` mkdir ```
+5. Command ``` echo ``` is used to print text to the user
 
 **Uninstall script**
 
@@ -193,7 +190,7 @@ else
 fi
 ```
 This file works if user confirms default install location. If program is installed somwhere else than uninstall doesn't work.
-
+1. Command ``` rm -r ``` is used to delete folder with everything in it
 
 **Backup database script**
 ```sh
@@ -215,7 +212,8 @@ fi
 ```
 This program works.
 It is hard for user to specifiy backup location, this should be considered and fixed. I will work on that if I have any time left.
-
+1. To get first argument we use ``` $1 ```
+1. To check number of arguments use  ``` $# ```
 
 **Create a new car script**
 
@@ -246,10 +244,8 @@ echo "" > ~/Desktop/RentalCarApp/db/$plate.txt
 bash frame.sh "Car created successfully"
 ```
 This program works
-1. > is used to create new file and add entered text to file, but if overwrites old file with the same name 
-```sh echo "" > ~/Desktop/RentalCarApp/db/$plate.txt ```
-1. >> is used to create new file or add text to already existing file
-```sh echo "$plate $model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt ```
+1. > is used to create new file and add entered text to file, but if overwrites old file with the same name  ``` echo "" > ~/Desktop/RentalCarApp/db/$plate.txt ```
+2. >> is used to create new file or add text to already existing file ``` echo "$plate $model $color $pp" >> ~/Desktop/RentalCarApp/db/maincarfile.txt ```
 
 **Frame scrip**
 ```sh
@@ -338,6 +334,8 @@ done
 echo ""
 ```
 This script is used to print messeges to the user in frame. Messege is always positioned in the middle of the frame.
+1. To get all arguments I used comand ``` $* ```
+2. TO count number of letters in a word or string I used command ``` ${#word} ```
 
 **Create record file for a car**
 
@@ -378,6 +376,8 @@ else
 fi
 ```
 This program works
+1. To add text to existing file I used ``` echo "text" >> file.txt
+
 
 **Delete a car script**
 
@@ -435,13 +435,12 @@ fi
 ```
 
 1. 29th Oct This program is put together from few differend programs but never tested. I need to test it.
-1. 30th Oct First run of the program, program not working, it does not delete car from maincar file, problem is in syntax which is differend for macOS and linux
-```sh sed -i '' "/^$license/d" maincarfile.txt ```
-1. 30th Oct Second run of the program, program works correctly. If syntax is differend in macOS and Linux, does that mean that program doesn't work on macOS? I will test that next time
-```sh sed -i '' "/^$license/d" maincarfile.txt ```
+2. 30th Oct First run of the program, program not working, it does not delete car from maincar file, problem is in syntax which is differend for macOS and linux ``` sed -i '' "/^$license/d" maincarfile.txt ```
+3. 30th Oct Second run of the program, program works correctly. If syntax is differend in macOS and Linux, does that mean that program doesn't work on macOS? I will test that next time ``` sed -i '' "/^$license/d" maincarfile.txt ```
+4. This comand is used to search for the line that starts with argument entered by the user and delete it in file defined ``` sed -i "/$1/d" maincarfile.txt ```
+5. ``` ls ``` lists all the files in current folder
 
-```sh sed -i "/$1/d" maincarfile.txt ```
-This comand is used to search for the line that starts with argument entered by the user and delete it in file defined
+
 
 **Create summary script**
 
@@ -591,11 +590,9 @@ bash frame.sh "Car edited successfully"
 ```
 
 1. 29th Oct Program is just copied, not tested yet.
-1. 30th Oct First run does not delete car from maincar file, it just adds new entery, problem is in syintax, it is differend on macOS and Linux
-```sh sed -i '' "/^$license/d" maincarfile.txt ``` 
+2. 30th Oct First run does not delete car from maincar file, it just adds new entery, problem is in syintax, it is differend on macOS and Linux ``` sed -i '' "/^$license/d" maincarfile.txt ``` 
 sed command is used to search for line in a file defined, that starts with wanted string ($license in our case) and deletes it
-1. 30th Oct Second run program works correctly
-```sh sed -i "/^$license/d" maincarfile.txt ```
+3. 30th Oct Second run program works correctly ```sh sed -i "/^$license/d" maincarfile.txt ```
 
 **User documentation man pages**
 **Uninstall man page**
@@ -789,4 +786,5 @@ Evaluation
 1. A baasic backup funcionality is avelible - YES
 
 ### Improvements
+Next time it would be good, if we have enaugh time, to create test programs for all of the scripts. Major problem current program has right now, which is making it harder to use (not simple as user wanted), is problem with installation and backup path. We don't know user's computer configuration and for user is hard to enter path with correct syntax. Antoher problem regarding paths is that we offer user option during installation process to change installation path. If he changes installation path that our uninstall script is not working anymore. 
 improvements: test files, all the paths install uninstall backup
