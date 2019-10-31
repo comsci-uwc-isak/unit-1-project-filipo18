@@ -55,3 +55,7 @@ Class works perfect for me. I always prefered problem based learnig when I was f
 Oct 29
 -------
 Today we were finnishing CarRentalApp, I just copied edit and delete and backup programs, so I need to test them and finnish documentation for them. I feel like I have situtation under control, backup, install and uninstall programs will maybe make me some problems becasue for user is complicated to enter correct path. For me is hard to guess whic path will be correct on users computer. I will try to work on that. Otherwise app is almost finnished. Tomorrow willl probably be complete than just testing seperates us from finnishing the project.
+
+Oct 30
+-------
+Programing finnished, finalizing documentation.
