@@ -526,13 +526,14 @@ bash frame.sh "TOTAL DISTANCE TRAVELED FOR $file was: $total"
 
 This program works
 
+This script is used go thorugh all .txt files in the folder:
 ```sh
 for f in *.txt;
 do
 done
 ```
-This script is used go thorugh all .txt files in the folder
 
+This script is used to read all the words if file defined at the end. While loop goes through all the lines in file, for loop goes through every word in line.:
 ```sh
 while read line;
         do
@@ -542,8 +543,6 @@ while read line;
           done
         done < "$f"
 ```
-This script is used to read all the words if file defined at the end. While loop goes through all the lines in file, for loop goes through every word in line.
-
 
 
 **Edit car script**
