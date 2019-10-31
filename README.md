@@ -35,8 +35,7 @@ This are mesurable outcomes
 1. The installation is simple-> one step process
 1. A summary (total/avrage distance traveled) can be generated for particular car
 1. Trips can be recorded and stored for an existing car
-1. A basic database system is implemented
-1. A baasic backup funcionality is avelible
+1. A basic permanent storage system and backup	
 
 
 
@@ -79,10 +78,12 @@ Design
 
 **Delete a car script**
 1. Ask user which car to delete
-1. Check if user chose correctly
+1. Check if user chose correctly (Just one argument, than check if license exist or not)
 1. Delete chosen $plate.txt file and car entery in maincarfile.txt
 
 **Create summary script**
+1. Get first argument from user $!
+1. Check if there is just one argument
 1. If user eneters license plate as argument, print total kilometers for this license plate
 1. If user enters all as an argument then show him total kilometers for all cars
 
@@ -90,7 +91,7 @@ Design
 1. This script first check if user eneterd correct number of arguments
 1. Then checks if car we want to edit even exists
 1. Than it finds car user wants in main car file
-1. Deletes it and than add the data
+1. Deletes it and than add the new data
 
 
 Development
@@ -775,15 +776,37 @@ Evaluation
 -----------
 
 ### Evaluation Sucess Criteria
-1. A car can be created and stored in database - YES
-1. A car infromation can be edited - YES
-1. A car can be deleted from the database - YES
-1. The installation is simple-> one step process - YES
-1. A summary (total/avrage distance traveled) can be generated for particular car - YES (Just total distance)
-1. Trips can be recorded and stored for an existing car - YES
-1. A basic database system is implemented - YES
-1. A baasic backup funcionality is avelible - YES
+
+|    CRITERIA                                                             |   MET?  |
+| ----------------------------------------------------------------------- | ------- |
+| A car can be created and stored in database				  |   Yes   |
+|									  |	    |
+| The installation is simple-> one step process				  |   Yes   |
+|									  |         |
+| A car infromation can be edited					  |   Yes   |
+|									  |         |
+| A car can be deleted from the database				  |   Yes   |
+|									  |	    |
+| A summary (total/avrage distance traveled) can be generated             |   Yes   |         
+| for particular car 							  |         |
+|									  |         |
+| Trips can be recorded and stored for an existing car 			  |   Yes   |
+| 									  |         |
+|									  |         |
+| Easy commands that allow to enter the detail of the trip distance (km)  |   Yes   |
+|									  |         |
+| A basic permanent storage system and backup				  |   Yes   |
+|									  |         |
+| A command to see total statistic					  |   Yes   |
+|									  |         |
+| User-skill independent						  |   Yes   |
+|									  |         |
+| A basic permanent storage system and backup				  |   Yes   |
+
 
 ### Improvements
-Next time it would be good, if we have enaugh time, to create test programs for all of the scripts. Major problem current program has right now, which is making it harder to use (not simple as user wanted), is problem with installation and backup path. We don't know user's computer configuration and for user is hard to enter path with correct syntax. Antoher problem regarding paths is that we offer user option during installation process to change installation path. If he changes installation path that our uninstall script is not working anymore. 
-improvements: test files, all the paths install uninstall backup
+1. Next time it would be good, if we have enaugh time, to create test programs for all of the scripts. Major problem current program has right now, which is making it harder to use (not simple as user wanted), is problem with installation and backup path. We don't know user's computer configuration and for user is hard to enter path with correct syntax. Antoher problem regarding paths is that we offer user option during installation process to change installation path. If he changes installation path that our uninstall script is not working anymore.
+
+1. If we merged everything in one program which would lauch other pograms, user would need to open just one file that would make use easier. 
+
+1. We would make program much more user friendlly if we could show him data base in real time
