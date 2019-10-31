@@ -155,11 +155,15 @@ fi
 This file works
 1. If command which is used in this program executes folowing command if criteria in brackets is true, if not it moves to next elif or else line till we end it with fi comand.
 1. cp commands copies folder from first specified location to second specified location
-```sh   cp -a ~/Downloads/CarRentalAppInstall/scripts/. ~/Desktop/CarRentalApp/scripts ```
+```sh
+cp -a ~/Downloads/CarRentalAppInstall/scripts/. ~/Desktop/CarRentalApp/scripts 
+```
 1. Cd is used to change directory
-```sh cd ```
+```sh 
+cd 
+```
 1. mkdir is used to make directroy (fodlder)
-```sh mkdir ```
+``` mkdir ```
 
 **Uninstall script**
 
