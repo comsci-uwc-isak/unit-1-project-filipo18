@@ -438,12 +438,11 @@ fi
 1. 29th Oct This program is put together from few differend programs but never tested. I need to test it.
 2. 30th Oct First run of the program, program not working, it does not delete car from maincar file, problem is in syntax which is differend for macOS and linux ``` sed -i '' "/^$license/d" maincarfile.txt ```
 3. 30th Oct Second run of the program, program works correctly. If syntax is differend in macOS and Linux, does that mean that program doesn't work on macOS? I will test that next time ``` sed -i '' "/^$license/d" maincarfile.txt ```
-([Source]https://www.folkstalk.com/2013/03/sed-remove-lines-file-unix-examples.html), published 3. Jul 2013, retrived 28. Oct 2019 )
+([Source](https://linuxize.com/post/bash-source-command), published 3. Jul 2013, retrived 28. Oct 2019)
 4. This comand is used to search for the line that starts with argument entered by the user and delete it in file defined ``` sed -i "/$1/d" maincarfile.txt ``` 
 5. ``` ls ``` lists all the files in current folder
 ([Source](https://linuxize.com/post/bash-source-command/), published 17. Jun 2019, retrived 31. Oct 2019)
-
-
+https://www.folkstalk.com/2013/03/sed-remove-lines-file-unix-examples.html
 **Create summary script**
 
 ```sh
