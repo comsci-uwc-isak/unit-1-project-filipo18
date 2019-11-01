@@ -59,3 +59,7 @@ Today we were finnishing CarRentalApp, I just copied edit and delete and backup 
 Oct 30
 -------
 Programing finnished, finalizing documentation.
+
+Nov 1
+------
+Program finnished, documentation finnsihed. I am exausted of repeating same explenation in 5 differend parts of documentation and this project was probably smallest and shortest programing project I will ever do in my life. I can't imagine how much work I will have with documentation for more complex projects.
