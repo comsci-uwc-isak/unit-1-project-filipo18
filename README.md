@@ -60,6 +60,8 @@ Design
 1. Move to program location
 1. Offer user option to cancel unistallation
 1. Delete whole program folder
+![Uninstall](uninstall.jpg)
+**Fig. 3** This is flow diagram for uninstall script
 
 **Backup database script**
 1. Get location where user wants to back up data base
@@ -75,11 +77,15 @@ Design
 1. Get arguments from user, change them into variables
 1. Check number of arguments (license, plate, dateout, datein)
 1. Add data enetered by user to $plate.txt file
+![Record](record.jpg)
+**Fig. 4** This is flow diagram for record script
 
 **Delete a car script**
 1. Ask user which car to delete
 1. Check if user chose correctly (Just one argument, than check if license exist or not)
 1. Delete chosen $plate.txt file and car entery in maincarfile.txt
+![Delete](delete.jpg)
+**Fig. 5** This is flow diagram for delete script
 
 **Create summary script**
 1. Get first argument from user $!
