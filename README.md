@@ -377,7 +377,7 @@ else
 fi
 ```
 This program works
-1. To add text to existing file I used ``` echo "text" >> file.txt
+1. To add text to existing file I used ``` echo "text" >> file.txt ```
 
 
 **Delete a car script**
