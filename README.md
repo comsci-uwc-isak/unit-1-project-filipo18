@@ -778,31 +778,8 @@ Evaluation
 
 ### Evaluation Sucess Criteria
 
-|    CRITERIA                                                             |   MET?  |
-| ----------------------------------------------------------------------- | ------- |
-| A car can be created and stored in database				  |   Yes   |
-|									  |	    |
-| The installation is simple-> one step process				  |   Yes   |
-|									  |         |
-| A car infromation can be edited					  |   Yes   |
-|									  |         |
-| A car can be deleted from the database				  |   Yes   |
-|									  |	    |
-| A summary (total/avrage distance traveled) can be generated             |   Yes   |         
-| for particular car 							  |         |
-|									  |         |
-| Trips can be recorded and stored for an existing car 			  |   Yes   |
-| 									  |         |
-|									  |         |
-| Easy commands that allow to enter the detail of the trip distance (km)  |   Yes   |
-|									  |         |
-| A basic permanent storage system and backup				  |   Yes   |
-|									  |         |
-| A command to see total statistic					  |   Yes   |
-|									  |         |
-| User-skill independent						  |   Yes   |
-|									  |         |
-| A basic permanent storage system and backup				  |   Yes   |
+![evaluation](evaluation.jpg)
+**Fig. 6** This is evaluation table for the program
 
 
 ### Improvements
