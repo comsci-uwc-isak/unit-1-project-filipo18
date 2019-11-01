@@ -594,6 +594,8 @@ sed command is used to search for line in a file defined, that starts with wante
 3. 30th Oct Second run program works correctly ```sh sed -i "/^$license/d" maincarfile.txt ```
 
 **User documentation man pages**
+They are stored in /usr/share/man/man6, this is games category.
+
 **Uninstall man page**
 ```sh
 .TH man 6 "30 Oct 2019" "1.0" "uninstall man page"
