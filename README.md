@@ -778,7 +778,7 @@ Evaluation
 
 ### Evaluation Sucess Criteria
 
-![evaluation](evaluation.jpg)
+![evalutation](evalutation.jpg)
 **Fig. 6** This is evaluation table for the program
 
 
