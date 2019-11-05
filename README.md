@@ -1,5 +1,10 @@
 ![CarRental](logo.png)
-
+```.py
+Marks=24
+Demo=4
+Total=(Marks+Demo)=28
+```
+**Graded on Nov 5**
 Car Rental Minimal App
 ===========================
 
@@ -37,7 +42,17 @@ This are mesurable outcomes
 1. Trips can be recorded and stored for an existing car
 1. A basic permanent storage system and backup	
 
+**Criterion A**
 
+|Level|Descriptor|
+|----|-----|
+|4|The client in the car rental office is identified and his situation is stated. The rationale for choosing the proposed product is partially explained and includes some appropriate criteria for evaluating the success of the product.|
+```.sh
+Rational
+* The context of the problem faced by the client is not clearly explained, we do not need his needs from reading the paragraph above.
+* The rationale for selecting Bash is not discussed. HEre you can say that it is because we were learning this language in class.
+* The proposed solution should reflect how the client will be impacted.
+```
 
 Design
 ---------
@@ -99,6 +114,15 @@ Design
 1. Than it finds car user wants in main car file
 1. Deletes it and than add the new data
 
+## Criterion B
+|**level**|**Description**|
+|-----|------------|
+|8|An outline test plan is included but partially complete. A system diagram and some flow diagrams for algorithms in the product are included. They provide a basic understanding of how the product was developed.|
+```.sh
+Rationale
+*The system diagram could have been revised and improved. You can use the figure as a reference point and then refeer to it with the caption (Fig. 1). For example: "As shown in Fig. 1, the computational system consists of ..." This is necessary to be concrete about the reason from including the picture.
+* Good job with the flow diagrams. Here you did not get all the full marks because you are missing the description for all 3 diagrams. Remember, an image without description is an unbiguous tool. Add a paragraph explaining what YOU see in the image and the reason why you included.
+```
 
 Development
 --------
@@ -777,7 +801,15 @@ else
   echo "Test complete, car was deleted correctly: passed"
 fi
 ```
-
+## Criterion C
+|**level**|**Description**|
+|-----|------------|
+|6|The proposed solution is characterized by the appropriate use of existing tools. The techniques are adequate for the task and their use is explained. All sources are identified.|
+```.sh
+Rationale
+* Neat work here Filip
+* You can improve this development part by including the references to the sources you researched when solving the different problems faced, for example " As presented in [1], to read a file in bash we need to ...". Then add the citation at the end of the document in MLA format.
+```
 
 Evaluation
 -----------
@@ -794,3 +826,12 @@ Evaluation
 1. If we merged everything in one program which would lauch other pograms, user would need to open just one file that would make use easier. 
 
 1. We would make program much more user friendlly if we could show him data base in real time
+
+## Criterion D
+|**level**|**Description**|
+|-----|------------|
+|6|The product is fully evaluated against the success criteria identified in criterion A. Recommendations for further improvement of the product are realistic.|
+```.sh
+Rationale
+* The Improvements are realistic and necessary. The evidence for the achievement of the criteria works really well in the table. Well done
+```
